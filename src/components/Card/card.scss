@@ -23,10 +23,11 @@
       margin: unset;
       overflow: hidden;
       text-overflow: ellipsis;
+      align-self: end;
    }
 
    .card-url {
-      color: #3d933d;
+      color: $green-url;
    }
 
    .card-star--container {
@@ -50,7 +51,7 @@
       text-transform: uppercase;
       width: 65%;
       &:hover {
-         background-color: #5b7f5e;
+         background-color: $button-hover;
       }
    }
 }

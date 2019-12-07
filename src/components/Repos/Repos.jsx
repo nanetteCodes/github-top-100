@@ -21,7 +21,6 @@ export default class Repos extends Component {
       } catch (err) {
          console.log(err);
       }
-      console.log(this.state);
    }
 
    render() {

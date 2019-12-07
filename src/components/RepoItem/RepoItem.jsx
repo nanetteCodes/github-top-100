@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from '../Card/Card';
 import Modal from '../Modal/Modal';
+import ModalError from '../ModalError/ModalError';
 import PropTypes from 'prop-types';
 
 export default class RepoItem extends Component {
@@ -17,8 +18,7 @@ export default class RepoItem extends Component {
       this.setState({ commitUrl });
 
       try {
-         // const res = await fetch(`${commitUrl}?since=${twentyFourAgo}`);
-         const res = await fetch(`${commitUrl}`);
+         const res = await fetch(`${commitUrl}?since=${twentyFourAgo}`);
          const data = await res.json();
          if (!res.ok) {
             throw Error(res.statusText);
@@ -26,8 +26,8 @@ export default class RepoItem extends Component {
          this.setState({ commitData: data, modal: true });
       } catch (err) {
          console.log(err);
+         alert(err);
       }
-      console.log(this.state);
    };
 
    hideModal = () => {
@@ -37,47 +37,42 @@ export default class RepoItem extends Component {
    render() {
       const { repos } = this.props;
       const { commitData } = this.state;
+      const emptyMsg = 'No Commits Made For 24 Hours';
+
       return (
          <>
             {repos.map(repo => (
-               <div className='card' key={repo.id}>
-                  <Card
-                     repoName={repo.name}
-                     repoUrl={repo.html_url}
-                     starCount={repo.stargazers_count}
-                  />
-                  <button
-                     className='card-button'
-                     id={repo.id}
-                     onClick={() =>
-                        this.handleClick(repo.commits_url.split('{')[0])
-                     }
-                  >
-                     Commits
-                  </button>
-                  <Modal show={this.state.modal} handleClose={this.hideModal}>
-                     {commitData && <h1>No Commits Made For 24 Hours</h1>}
-                     {commitData.map(commit => (
-                        <div key={commit.node_id}>
-                           <img
-                              src={commit.author.avatar_url}
-                              alt={commit.commit.message}
-                           />
-                           <h2>{commit.commit.author.name}</h2>
-                           <span>{commit.commit.author.date}</span>
-                           <a
-                              href={commit.html_url}
-                              target='_blank'
-                              rel='noopener noreferrer'
-                           >
-                              view
-                           </a>
-                           <p>{commit.commit.message}</p>
-                        </div>
-                     ))}
-                  </Modal>
-               </div>
+               <Card
+                  key={repo.id}
+                  repoName={repo.name}
+                  repoUrl={repo.html_url}
+                  starCount={repo.stargazers_count}
+                  handleClick={() =>
+                     this.handleClick(repo.commits_url.split('{')[0])
+                  }
+               />
             ))}
+            {commitData.length ? (
+               commitData.map(commit => (
+                  <Modal
+                     show={this.state.modal}
+                     handleClose={this.hideModal}
+                     key={commit.node_id}
+                     author={commit.commit.author.name}
+                     commitLink={commit.html_url}
+                     date={commit.commit.author.date}
+                     id={commit.node_id}
+                     imgUrl={commit.author.avatar_url}
+                     message={commit.commit.message}
+                  />
+               ))
+            ) : (
+               <ModalError
+                  message={emptyMsg}
+                  show={this.state.modal}
+                  handleClose={this.hideModal}
+               />
+            )}
          </>
       );
    }

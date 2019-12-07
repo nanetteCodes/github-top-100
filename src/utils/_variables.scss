@@ -2,10 +2,11 @@ $main-font: 'Quattrocento Sans', sans-serif;
 $heading-font: 'Modak', serif;
 
 $background-color: rgb(253, 246, 242);
-$main-teal: rgb(3, 160, 146);
 $darker-green: rgb(126, 165, 129);
+$lighter-green: #f1f6f1;
+$button-hover: #5b7f5e;
 $box-shadow-teal: rgba(27, 162, 57, 0.15) 10px 10px 0px;
-$lighter-teal: #00ad9e;
+$green-url: #3d933d;
 $green-black: #49564a;
 $egg: #f9f9f9;
 
@@ -15,5 +16,4 @@ $break-mobile: 480px;
 $break-tablet: 765px;
 $break-desktop: 976px;
 $break-desktop-l: 1070px;
-$break-1200: 1200px;
-$x-large: 1500px;
+$break-xl: 2000px;

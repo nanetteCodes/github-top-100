@@ -1,3 +1,5 @@
+@import '../../utils/_variables.scss';
+
 .modal {
    position: fixed;
    padding-top: 50px;
@@ -17,22 +19,74 @@
 
    &-main {
       position: relative;
-      background-color: white;
+      background-color: $egg;
       padding: 20px;
       margin: auto;
       width: 75%;
       height: 80vh;
       z-index: 1000;
+      overflow: hidden;
    }
+
+   .modal-title {
+      text-align: center;
+      font-size: 2.1rem;
+      color: $green-black;
+   }
+
+   &-item {
+      display: grid;
+      grid-template-columns: 200px auto;
+      grid-column-gap: 15px;
+      margin-bottom: 20px;
+      background-color: $lighter-green;
+      border-radius: 5px;
+      box-shadow: $box-shadow-teal;
+
+      img {
+         width: 100%;
+      }
+      h2 {
+         align-self: center;
+      }
+      h2,
+      h4,
+      p {
+         margin: 0;
+      }
+      a {
+         align-self: center;
+         color: $green-url;
+      }
+   }
+
    button {
-      color: #aaa;
+      position: sticky;
       float: right;
-      font-size: 28px;
-      font-weight: bold;
+      margin: 8px;
+      width: 108px;
+      padding: 14px;
+      background-color: $darker-green;
+      border-radius: 5px;
+      color: white;
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+
       &:hover,
       &:focus {
-         text-decoration: none;
+         background-color: $button-hover;
          cursor: pointer;
       }
+   }
+}
+
+@media only screen and (max-width: $break-mobile) {
+   .modal-item {
+      grid-template-columns: repeat(1, 1fr);
+   }
+
+   .modal-main {
+      width: 90%;
    }
 }

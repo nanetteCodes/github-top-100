@@ -54,3 +54,9 @@ body {
       grid-auto-rows: 300px;
    }
 }
+
+@media only screen and (min-width: $break-xl) {
+   .container {
+      margin: 10px 10%;
+   }
+}
