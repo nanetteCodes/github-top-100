@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import RepoItem from '../RepoItem/RepoItem';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 export default class Repos extends Component {
    state = {
       repos: [],
+      loading: false,
    };
    async componentDidMount() {
       try {
+         this.setState({ loading: true });
          const res = await fetch(
             'https://api.github.com/search/repositories?q=stars&sort=stars&order=desc&per_page=100',
          );
@@ -14,7 +17,7 @@ export default class Repos extends Component {
          if (!res.ok) {
             throw Error(res.statusText);
          }
-         this.setState({ repos: data.items });
+         this.setState({ repos: data.items, loading: false });
       } catch (err) {
          console.log(err);
       }
@@ -22,7 +25,12 @@ export default class Repos extends Component {
    }
 
    render() {
-      const { repos } = this.state;
-      return <RepoItem repos={repos} />;
+      const { repos, loading } = this.state;
+      return (
+         <>
+            {loading ? <LoadingSpinner /> : null}
+            <RepoItem repos={repos} />
+         </>
+      );
    }
 }

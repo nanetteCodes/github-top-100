@@ -56,6 +56,7 @@ export default class RepoItem extends Component {
                      Commits
                   </button>
                   <Modal show={this.state.modal} handleClose={this.hideModal}>
+                     {commitData && <h1>No Commits Made For 24 Hours</h1>}
                      {commitData.map(commit => (
                         <div key={commit.node_id}>
                            <img
