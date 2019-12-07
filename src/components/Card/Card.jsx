@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import './card.scss';
 
 const Card = ({ repoName, repoUrl, starCount, children }) => {
@@ -13,7 +15,10 @@ const Card = ({ repoName, repoUrl, starCount, children }) => {
          >
             View Repository
          </a>
-         <p className='card-stars'>{starCount}</p>
+         <div className='card-star--container'>
+            <FontAwesomeIcon icon={faStar} />
+            <span className='card-stars'>{starCount}</span>
+         </div>
       </div>
    );
 };

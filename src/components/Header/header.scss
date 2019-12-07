@@ -1,9 +1,9 @@
+@import '../../utils/variables';
+
 .header {
-   color: rgb(0, 36, 29);
-   color: linear-gradient(
-      90deg,
-      rgba(0, 36, 29, 0.9108018207282913) 0%,
-      rgba(11, 171, 134, 0.6306897759103641) 26%,
-      rgba(14, 71, 49, 1) 100%
-   );
+   font-family: $heading-font;
+   color: $green-black;
+   font-size: 5rem;
+   text-align: center;
+   text-transform: capitalize;
 }

@@ -1,12 +1,12 @@
 @import './utils/_variables.scss';
 
 body {
-   margin: 0;
-   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
+   margin: 38px 0;
+   font-family: $main-font, 'Roboto', 'Helvetica Neue', sans-serif;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
+   background-color: #fafffd;
+   color: $green-black;
 }
 
 #root {

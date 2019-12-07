@@ -13,25 +13,35 @@
    display: grid;
    grid-template-rows: 2fr 1fr;
 
+   .card-body {
+      display: grid;
+      align-items: center;
+   }
+
    .card-title {
-      align-self: center;
-      font-weight: 200;
-      font-size: 19px;
+      font-size: 1.4rem;
+      margin: unset;
+      overflow: hidden;
+      text-overflow: ellipsis;
    }
 
    .card-url {
       color: #3d933d;
    }
 
-   .card-stars {
-      font-weight: 100;
-      align-self: start;
+   .card-star--container {
+      font-size: 0.8rem;
+      .card-stars {
+         font-weight: 100;
+         align-self: start;
+         margin-left: 3px;
+      }
    }
 
    .card-button {
       text-align: center;
       justify-self: center;
-      background-color: $button-green;
+      background-color: $darker-green;
       border-radius: 5px;
       margin-bottom: 12px;
       color: white;
