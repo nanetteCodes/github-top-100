@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import './card.scss';
 
-const Card = ({ repoName, repoUrl, starCount, children }) => {
+const Card = ({ repoName, repoUrl, starCount }) => {
    return (
       <div className='card-body'>
          <h5 className='card-title'>{repoName}</h5>
@@ -21,6 +22,12 @@ const Card = ({ repoName, repoUrl, starCount, children }) => {
          </div>
       </div>
    );
+};
+
+Card.propType = {
+   repoName: PropTypes.string.isRequired,
+   repoUrl: PropTypes.string.isRequired,
+   starCount: PropTypes.string.isRequired,
 };
 
 export default Card;

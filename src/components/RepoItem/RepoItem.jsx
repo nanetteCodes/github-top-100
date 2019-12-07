@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from '../Card/Card';
 import Modal from '../Modal/Modal';
+import PropTypes from 'prop-types';
 
 export default class RepoItem extends Component {
    state = {
@@ -16,7 +17,8 @@ export default class RepoItem extends Component {
       this.setState({ commitUrl });
 
       try {
-         const res = await fetch(`${commitUrl}?since=${twentyFourAgo}`);
+         // const res = await fetch(`${commitUrl}?since=${twentyFourAgo}`);
+         const res = await fetch(`${commitUrl}`);
          const data = await res.json();
          if (!res.ok) {
             throw Error(res.statusText);
@@ -30,7 +32,6 @@ export default class RepoItem extends Component {
 
    hideModal = () => {
       this.setState({ modal: false });
-      console.log(this.state.modal);
    };
 
    render() {
@@ -81,3 +82,7 @@ export default class RepoItem extends Component {
       );
    }
 }
+
+RepoItem.propTypes = {
+   repos: PropTypes.array.isRequired,
+};
