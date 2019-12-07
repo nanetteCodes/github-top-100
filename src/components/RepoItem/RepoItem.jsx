@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Card from '../Card/Card';
 import Modal from '../Modal/Modal';
-import './repoItem.scss';
 
 export default class RepoItem extends Component {
    state = {
@@ -38,7 +37,7 @@ export default class RepoItem extends Component {
       const { repos } = this.props;
       const { commitData } = this.state;
       return (
-         <div>
+         <>
             {repos.map(repo => (
                <div className='card' key={repo.id}>
                   <Card
@@ -47,7 +46,7 @@ export default class RepoItem extends Component {
                      starCount={repo.stargazers_count}
                   />
                   <button
-                     className='card-url'
+                     className='card-button'
                      id={repo.id}
                      onClick={() =>
                         this.handleClick(repo.commits_url.split('{')[0])
@@ -78,7 +77,7 @@ export default class RepoItem extends Component {
                   </Modal>
                </div>
             ))}
-         </div>
+         </>
       );
    }
 }

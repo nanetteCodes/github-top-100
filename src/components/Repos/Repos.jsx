@@ -27,10 +27,10 @@ export default class Repos extends Component {
    render() {
       const { repos, loading } = this.state;
       return (
-         <>
+         <div className='container grid'>
             {loading ? <LoadingSpinner /> : null}
             <RepoItem repos={repos} />
-         </>
+         </div>
       );
    }
 }

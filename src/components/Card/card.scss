@@ -1,0 +1,46 @@
+@import '../../utils/_variables.scss';
+
+.card {
+   background-color: $background-color;
+   box-shadow: $box-shadow-teal;
+   border-radius: 5px;
+   text-align: center;
+   padding: 40px 20px;
+   max-width: 100%;
+   border-radius: 5px;
+   text-align: center;
+   padding: 0 14px;
+   display: grid;
+   grid-template-rows: 2fr 1fr;
+
+   .card-title {
+      align-self: center;
+      font-weight: 200;
+      font-size: 19px;
+   }
+
+   .card-url {
+      color: #3d933d;
+   }
+
+   .card-stars {
+      font-weight: 100;
+      align-self: start;
+   }
+
+   .card-button {
+      text-align: center;
+      justify-self: center;
+      background-color: $button-green;
+      border-radius: 5px;
+      margin-bottom: 12px;
+      color: white;
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      width: 65%;
+      &:hover {
+         background-color: #5b7f5e;
+      }
+   }
+}
