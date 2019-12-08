@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import './modal.scss';
 
 const Modal = ({
@@ -17,11 +19,14 @@ const Modal = ({
    return (
       <div className={showHideClass}>
          <div className='modal-main' id={id}>
+            <button onClick={handleClose}>
+               <FontAwesomeIcon icon={faTimes} />
+            </button>
             <h1 className='modal-title'>Commits Made Since {date} </h1>
             <div style={{ overflow: 'auto', height: '68vh' }}>
                <div className='modal-item'>
                   <img src={imgUrl} alt={message} />
-                  <div style={{ display: 'grid' }}>
+                  <div className='modal-item--body'>
                      <h2>{author}</h2>
                      <h4>Time: {date}</h4>
                      <p>
@@ -37,7 +42,6 @@ const Modal = ({
                   </div>
                </div>
             </div>
-            <button onClick={handleClose}>close</button>
          </div>
       </div>
    );

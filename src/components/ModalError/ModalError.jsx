@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import '../Modal/modal.scss';
 
 const ModalError = ({ handleClose, show, message }) => {
@@ -9,9 +11,11 @@ const ModalError = ({ handleClose, show, message }) => {
       <div className={showHideClass}>
          <div className='modal-main'>
             <div style={{ overflow: 'auto', height: '75vh' }}>
+               <button onClick={handleClose}>
+                  <FontAwesomeIcon icon={faTimes} />
+               </button>
                <h1 className='modal-title'>{message}</h1>
             </div>
-            <button onClick={handleClose}>close</button>
          </div>
       </div>
    );

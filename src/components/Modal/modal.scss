@@ -43,6 +43,10 @@
       border-radius: 5px;
       box-shadow: $box-shadow-teal;
 
+      &--body {
+         display: grid;
+      }
+
       img {
          width: 100%;
       }
@@ -61,37 +65,40 @@
    }
 
    button {
-      position: sticky;
       float: right;
-      margin: 8px;
-      width: 108px;
-      padding: 14px;
-      background-color: $darker-green;
-      border-radius: 5px;
-      color: white;
-      font-size: 18px;
-      font-weight: 800;
-      text-transform: uppercase;
+      background-color: $egg;
+      border: none;
+      color: $green-black;
+      font-size: 28px;
 
       &:hover,
       &:focus {
-         background-color: $button-hover;
+         color: $green-url;
          cursor: pointer;
       }
    }
 }
 
 @media only screen and (max-width: $break-mobile) {
-   .modal-item {
-      grid-template-columns: repeat(1, 1fr);
-   }
-
-   .modal-main {
-      width: 90%;
-      height: 100%;
-   }
-
    .modal {
       padding-top: 0;
+
+      .modal-title {
+         font-size: 1.2rem;
+      }
+
+      .modal-item {
+         grid-template-columns: repeat(1, 1fr);
+      }
+
+      .modal-main {
+         width: 90%;
+         height: 100%;
+      }
+
+      .modal-item--body {
+         grid-gap: 8px;
+         padding: 4px 12px;
+      }
    }
 }
