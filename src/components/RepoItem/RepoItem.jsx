@@ -38,7 +38,6 @@ export default class RepoItem extends Component {
       const { repos } = this.props;
       const { commitData } = this.state;
       const emptyMsg = 'No Commits Made For 24 Hours';
-
       return (
          <>
             {repos.map(repo => (
@@ -52,20 +51,12 @@ export default class RepoItem extends Component {
                   }
                />
             ))}
-            {commitData.length ? (
-               commitData.map(commit => (
+            {commitData.length ? (               
                   <Modal
+                     commitData={commitData}
                      show={this.state.modal}
                      handleClose={this.hideModal}
-                     key={commit.node_id}
-                     author={commit.commit.author.name}
-                     commitLink={commit.html_url}
-                     date={commit.commit.author.date}
-                     id={commit.node_id}
-                     imgUrl={commit.author.avatar_url}
-                     message={commit.commit.message}
-                  />
-               ))
+                  />               
             ) : (
                <ModalError
                   message={emptyMsg}

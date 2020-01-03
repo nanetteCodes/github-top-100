@@ -5,42 +5,39 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import './modal.scss';
 
 const Modal = ({
-   author,
-   commitLink,
-   date,
-   handleClose,
-   id,
-   imgUrl,
-   show,
-   message,
+   commitData, 
+   handleClose, 
+   show   
 }) => {
    const showHideClass = show ? 'modal display-block' : 'modal display-none';
 
    return (
       <div className={showHideClass}>
-         <div className='modal-main' id={id}>
+         <div className='modal-main'>
             <button onClick={handleClose}>
                <FontAwesomeIcon icon={faTimes} />
             </button>
-            <h1 className='modal-title'>Commits Made Since {date} </h1>
-            <div style={{ overflow: 'auto', height: '68vh' }}>
-               <div className='modal-item'>
-                  <img src={imgUrl} alt={message} />
-                  <div className='modal-item--body'>
-                     <h2>{author}</h2>
-                     <h4>Time: {date}</h4>
-                     <p>
-                        <strong>Message:</strong> {message}
-                     </p>
-                     <a
-                        href={commitLink}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                     >
-                        View Commit
-                     </a>
-                  </div>
-               </div>
+            <h1 className='modal-title'>Commits Made</h1>
+            <div style={{ overflow: 'auto', height: '68vh' }}>  
+               {commitData.map(commit => (          
+                  <div className='modal-item' key ={commit.node_id} id={commit.node_id}>
+                     <img src={commit.author.avatar_url} alt={commit.commit.message} />
+                     <div className='modal-item--body'>
+                        <h2>{commit.commit.author.name}</h2>
+                        <h4>Time: {commit.commit.author.date}</h4>
+                        <p>
+                           <strong>Message:</strong> {commit.commit.message}
+                        </p>
+                        <a
+                           href={commit.html_url}
+                           target='_blank'
+                           rel='noopener noreferrer'
+                        >
+                           View Commit
+                        </a>
+                     </div>
+                  </div>       
+               ))} 
             </div>
          </div>
       </div>
@@ -48,14 +45,9 @@ const Modal = ({
 };
 
 Modal.propTypes = {
-   author: PropTypes.string,
-   commitLink: PropTypes.string,
-   date: PropTypes.string,
+   commitData: PropTypes.array.isRequired,
    handleClose: PropTypes.func.isRequired,
-   id: PropTypes.string.isRequired,
-   imgUrl: PropTypes.string,
    show: PropTypes.bool.isRequired,
-   message: PropTypes.string,
 };
 
 export default Modal;
