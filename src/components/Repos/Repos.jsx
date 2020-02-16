@@ -12,7 +12,7 @@ export default class Repos extends Component {
     try {
       this.setState({ loading: true });
       const res = await fetch(
-        'https://api.github.com/search/repositostars&sort=stars&order=desc&per_page=100',
+        'https://api.github.com/search/repositories?q=stars&sort=stars&order=desc&per_page=100',
       );
       const data = await res.json();
       if (!res.ok) {
